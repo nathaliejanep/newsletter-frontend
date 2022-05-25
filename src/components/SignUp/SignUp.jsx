@@ -1,9 +1,17 @@
-// import { useState } from 'react';
+import { useState } from 'react';
 
 const SignUp = () => {
   //   const [username, setUsername] = useState('');
   //   const [password, setPassword] = useState('');
 
+  const [checked, setChecked] = useState(true);
+  function changeCheck() {
+    if (document.getElementById('newSubscribe').checked) {
+      setChecked(true);
+    } else {
+      setChecked(false);
+    }
+  }
   const signUp = (e) => {
     e.preventDefault();
     // setUsername(e.target.value);
@@ -11,9 +19,13 @@ const SignUp = () => {
     let username = document.getElementById('newUsername').value;
     let password = document.getElementById('newPassword').value;
 
+    let subscribe = '';
+
+    console.log(subscribe);
     let user = {
       username: username,
       password: password,
+      newsletter: checked,
     };
 
     fetch('http://localhost:5000/users/signup', {
@@ -41,7 +53,6 @@ const SignUp = () => {
           placeholder="Username"
           required
         />
-
         <label htmlFor="password">Password:</label>
         <input
           type="password"
@@ -49,6 +60,13 @@ const SignUp = () => {
           name="password"
           placeholder="Password"
           required
+        />
+        Subscribe to our Newsletter:
+        <input
+          onChange={changeCheck}
+          type="checkbox"
+          id="newSubscribe"
+          name="subscribe"
         />
         <input type="submit" placeholder="Submit" />
       </form>

@@ -1,13 +1,12 @@
 import { useState } from 'react';
-
+import LoggedIn from '../LoggedIn/LoggedIn';
 const Login = () => {
-  // const [errorMsg, setErrorMsg] = useState({});
   const [online, setOnline] = useState(false);
+  const lsID = localStorage.getItem('ID');
 
-  // const renderErrorMsg = (name) => {
-  //   name === errorMsg.name && <div className="error">{errorMsg.message}</div>;
-  // };
-
+  if (lsID) {
+    return <LoggedIn />;
+  }
   const handleSubmit = (e) => {
     e.preventDefault();
 
@@ -57,7 +56,8 @@ const Login = () => {
       <input type="submit" placeholder="Submit" />
     </form>
   );
-  return <div>{online ? <div>User is logged in</div> : renderForm}</div>;
+
+  return <div>{online ? <LoggedIn /> : renderForm}</div>;
 };
 
 export default Login;

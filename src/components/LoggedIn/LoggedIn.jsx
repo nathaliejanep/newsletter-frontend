@@ -1,6 +1,7 @@
-import { useState, useEffect } from 'react';
-import Login from '../Login/Login';
-// import Dashboard from '../Dashboard/Dashboard';
+import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+// import Login from '../Login/Login';
+import Dashboard from '../Dashboard/Dashboard';
 
 const LoggedIn = () => {
   //delete local storage on logout
@@ -48,7 +49,6 @@ const LoggedIn = () => {
   const signOut = () => {
     localStorage.removeItem('ID');
     // return <Dashboard />
-    return <Login />;
   };
   return (
     <div>

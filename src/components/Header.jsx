@@ -7,7 +7,9 @@ const Header = () => {
         <Link to={'/login'}>Login</Link>
       </li>
       <li>
-        <Link to={'/animals'}>Signup</Link>
+        <Link to={'/animals'} activeclassname="active">
+          Signup
+        </Link>
       </li>
     </ul>
   </nav>;

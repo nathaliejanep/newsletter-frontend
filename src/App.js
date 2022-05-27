@@ -1,10 +1,10 @@
 import React from 'react';
 import './App.css';
 import { Link, Route, Routes } from 'react-router-dom';
-import Login from './components/Login/Login';
-import Dashboard from './components/Dashboard/Dashboard';
-import SignUp from './components/SignUp/SignUp';
-import LoggedIn from './components/LoggedIn/LoggedIn';
+import Login from './components/Login';
+import Dashboard from './components/Dashboard';
+import SignUp from './components/SignUp';
+import LoggedIn from './components/LoggedIn';
 
 function App() {
   return (
@@ -26,22 +26,12 @@ function App() {
         </ul>
       </div>
 
-      <div className="app-intro">
-        <Routes>
-          <Route path="/" element={<Dashboard />}></Route>
-          <Route path="/login" element={<Login />}></Route>
-          <Route path="/signup" element={<SignUp />}></Route>
-          <Route path="/loggedin" element={<LoggedIn />}></Route>
-        </Routes>
-      </div>
-      {/* <Login />
-      <SignUp />
-      <BrowserRouter>
-        <Routes>
-          <Route path="/login" element={<Login />} />
-          <Route path="/signup" element={<SignUp />} />
-        </Routes>
-      </BrowserRouter> */}
+      <Routes>
+        <Route path="/" element={<Dashboard />}></Route>
+        <Route path="/login" element={<Login />}></Route>
+        <Route path="/signup" element={<SignUp />}></Route>
+        <Route path="/loggedin" element={<LoggedIn />}></Route>
+      </Routes>
     </div>
   );
 }

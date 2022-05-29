@@ -1,30 +1,31 @@
 import { useEffect, useState } from 'react';
 import Login from './Login';
-// import Login from '../Login/Login';
 
 const LoggedIn = () => {
   const [subscribe, setSubscribe] = useState(false);
   const [online, setOnline] = useState(true);
 
   let lsID = localStorage.getItem('ID');
+
+  // On start fetch user info through ls
   useEffect(() => {
-    fetch(`http://localhost:5000/users/${lsID}`)
+    fetch(`https://janes-newsletter.herokuapp.com/users/${lsID}`)
       .then((res) => res.json())
 
       .then((data) => {
         let userInfo = data;
         // set subscription from database
         setSubscribe(userInfo.newsletter);
-        console.log(subscribe, 'userinfo:');
       });
   }, []);
 
+  // Set newsletter to opposite inital value
   const changeSubscription = () => {
     let subscription = {
       _id: lsID,
       newsletter: !subscribe,
     };
-    fetch('http://localhost:5000/users/change', {
+    fetch('https://janes-newsletter.herokuapp.com/users/change', {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json',
@@ -34,15 +35,13 @@ const LoggedIn = () => {
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
+        setSubscribe(!subscribe);
       });
-    console.log('change sub:', subscribe);
-    setSubscribe(!subscribe);
   };
 
   const signOut = () => {
     localStorage.removeItem('ID');
     setOnline(false);
-    // return <Dashboard />
   };
 
   const onlineHtml = (

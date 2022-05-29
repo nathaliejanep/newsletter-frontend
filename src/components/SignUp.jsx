@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import Login from './Login';
 
 const SignUp = () => {
   const [username, setUsername] = useState('');
@@ -8,6 +7,7 @@ const SignUp = () => {
   const [error, setError] = useState(false);
   const [checked, setChecked] = useState(Boolean);
 
+  // Handles checbox value
   const changeCheck = () => {
     if (document.getElementById('newSubscribe').checked) {
       setChecked(true);
@@ -15,19 +15,17 @@ const SignUp = () => {
       setChecked(false);
     }
   };
+
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    // let subscribe = '';
-
-    // console.log(subscribe);
     let user = {
       username: username,
       password: password,
       newsletter: checked,
     };
 
-    fetch('http://localhost:5000/users/signup', {
+    fetch('https://janes-newsletter.herokuapp.com/users/signup', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -39,11 +37,9 @@ const SignUp = () => {
         if (data.status === 'error') {
           setSubmitted(false);
           setError(true);
-          console.log(error);
         } else {
           setSubmitted(true);
           setError(false);
-          console.log(error);
         }
         console.log(data);
       });
@@ -56,9 +52,9 @@ const SignUp = () => {
       <h2>Sign Up</h2>
       <form onSubmit={handleSubmit}>
         <div className="container">
-          <label htmlFor="username">Username:</label>
+          <label htmlFor="username">Email:</label>
           <input
-            type="text"
+            type="email"
             id="newUsername"
             name="username"
             placeholder="Username"

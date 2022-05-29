@@ -7,20 +7,21 @@ const Login = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
 
+  // If localstorage exists go to loggedin
   const lsID = localStorage.getItem('ID');
-
   if (lsID) {
     return <LoggedIn />;
   }
+
+  // If fetched status ok - set ls and online
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(username, password);
 
     let userLogin = {
       username: username,
       password: password,
     };
-    fetch('http://localhost:5000/users/login', {
+    fetch('https://janes-newsletter.herokuapp.com/users/login', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -47,9 +48,9 @@ const Login = () => {
       <h2>Log In</h2>
       <form onSubmit={handleSubmit}>
         <div className="container">
-          <label htmlFor="username">Username:</label>
+          <label htmlFor="username">Email:</label>
           <input
-            type="text"
+            type="email"
             id="username"
             name="username"
             placeholder="Username"

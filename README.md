@@ -1,21 +1,22 @@
 # newsletter-frontend
 
-Headless login app, user can register a new account and choose to subscribe to a newsletter.
-Bootstrapped with [Create React App](https://github.com/facebook/create-react-app) and built with Javascript.
+Headless login app, user can register a new account and choose to subscribe to a newsletter. <br>
+Bootstrapped with [Create React App](https://github.com/facebook/create-react-app) and built with Javascript.<br>
 Backend app built with nodeJS and Express: [newsletter-backend](https://github.com/facebook/create-react-app).
-
-# Use this application
-
-Go to: [janesnewsletter](https://janesnewsletter.herokuapp.com/).
-
-## Log in
-
-Email: no@mail.com
-Password: 123
-
-Email: giveme@mail.com
-Password: 123
 
 ## Packages used
 
 react-router-dom
+
+# Use this application
+
+Go to: https://janesnewsletter.herokuapp.com
+
+## Log in
+
+Email: no@mail.com<br>
+Password: 123<br>
+
+Email: giveme@mail.com<br>
+Password: 123<br>
+
